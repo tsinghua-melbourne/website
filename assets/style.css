@@ -800,12 +800,41 @@ a:hover { color: var(--link-hover); }
 }
 
 .post-content {
-  font-size: 16.5px;
+  max-width: 720px;
+  margin: 0 auto;
+  font-family: var(--font-serif);
+  font-size: 17px;
   color: var(--text-secondary);
   line-height: 2;
+  letter-spacing: 0.02em;
+  text-align: justify;
 }
-.post-content p { margin-bottom: 24px; }
-.post-content b { color: var(--text); font-weight: 600; }
+.post-content p { margin-bottom: 26px; }
+.post-content b,
+.post-content strong { color: var(--text); font-weight: 600; }
+.post-content ul,
+.post-content ol {
+  margin: 0 0 26px;
+  padding-left: 26px;
+}
+.post-content li { margin-bottom: 10px; }
+.post-content li::marker {
+  color: var(--purple-500);
+  font-weight: 600;
+}
+.post-content a {
+  color: var(--purple-700);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: rgba(116, 52, 129, 0.35);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  word-break: break-all;
+}
+.post-content a:hover {
+  color: var(--link-hover);
+  text-decoration-color: currentColor;
+}
 .post-content figure {
   margin: 44px auto;
   max-width: 860px;
@@ -870,14 +899,14 @@ a:hover { color: var(--link-hover); }
   transform: translateY(-2px);
   box-shadow: 0 10px 26px rgba(116, 52, 129, 0.45);
 }
-.post-content .post-citation {
+.post-content blockquote {
   margin: 32px auto;
   padding: 20px 26px;
   border-left: 3px solid var(--purple-500);
   background: var(--bg-soft);
   border-radius: 0 var(--radius) var(--radius) 0;
 }
-.post-content .post-citation p {
+.post-content blockquote p {
   margin: 0;
   color: var(--text-secondary);
   line-height: 1.9;
@@ -888,13 +917,30 @@ a:hover { color: var(--link-hover); }
   font-size: 13px;
   color: var(--text-tertiary);
 }
+.post-content .post-byline {
+  margin: -14px 0 32px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--text-tertiary);
+}
 .post-content h2 {
   font-family: var(--font-serif);
-  font-size: 25px;
+  font-size: 24px;
   font-weight: 700;
   color: var(--text);
-  margin: 44px 0 18px;
+  margin: 48px 0 20px;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.post-content h2::before {
+  content: '';
+  flex-shrink: 0;
+  width: 5px;
+  height: 22px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--purple-500), var(--gold));
 }
 .post-content hr {
   border: none;
