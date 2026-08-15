@@ -1568,8 +1568,7 @@ a:hover { color: var(--link-hover); }
 .footer-inner { max-width: 980px; margin: 0 auto; text-align: center; }
 .footer-logo {
   height: 64px;
-  width: 64px;
-  object-fit: contain;
+  width: auto;
   margin: 0 auto 12px;
   opacity: 0.9;
   filter: drop-shadow(0 4px 12px rgba(43, 10, 61, 0.25));
