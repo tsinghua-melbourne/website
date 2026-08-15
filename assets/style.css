@@ -792,10 +792,8 @@ a:hover { color: var(--link-hover); }
 .post-page { padding: 60px 22px 100px; }
 .post-cover { margin: 0 auto 44px; max-width: 860px; }
 .post-cover img {
-  border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
   margin: 0 auto;
-  border: 1px solid var(--border);
   background: var(--card-bg);
 }
 
@@ -840,10 +838,8 @@ a:hover { color: var(--link-hover); }
   max-width: 860px;
 }
 .post-content figure img {
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
   margin: 0 auto;
-  border: 1px solid var(--border);
   background: var(--card-bg);
 }
 .post-content figure figcaption {
@@ -853,7 +849,7 @@ a:hover { color: var(--link-hover); }
   color: var(--text-tertiary);
   letter-spacing: 0.5px;
 }
-/* Uniform photo gallery (grouped slideshow photos) */
+/* Photo gallery (natural ratios, drop shadow) */
 .post-content .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -867,11 +863,8 @@ a:hover { color: var(--link-hover); }
 }
 .post-content .gallery figure img {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border);
+  height: auto;
+  box-shadow: var(--shadow-lg);
   background: var(--card-bg);
   transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
 }
