@@ -297,7 +297,6 @@ a:hover { color: var(--link-hover); }
 .hero-small .hero-title {
   font-size: clamp(24px, 3.6vw, 36px);
   letter-spacing: 3px;
-  white-space: nowrap;
 }
 .hero-small .hero-kicker {
   margin-bottom: 14px;
@@ -763,8 +762,8 @@ a:hover { color: var(--link-hover); }
   box-shadow: var(--shadow-sm);
 }
 .pager-num {
-  min-width: 36px;
-  height: 36px;
+  min-width: 44px;
+  height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1127,6 +1126,18 @@ a:hover { color: var(--link-hover); }
 .committee-table tbody tr:nth-child(even) td { background: var(--bg-soft); }
 .committee-table tbody tr:hover td { background: var(--purple-100); }
 .committee-table tbody tr:first-child td { border-top: none; }
+
+/* Keep the term column visible while the table scrolls horizontally on mobile */
+.committee-table th:first-child,
+.committee-table td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--card-bg);
+  box-shadow: 2px 0 8px rgba(43, 10, 61, 0.08);
+}
+.committee-table tbody tr:nth-child(even) td:first-child { background: var(--bg-soft); }
+.committee-table tbody tr:hover td:first-child { background: var(--purple-100); }
 
 /* ---------- Fee ---------- */
 .fee-amount {
@@ -1529,7 +1540,7 @@ a:hover { color: var(--link-hover); }
 /* ---------- Salon ---------- */
 .salon-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
   gap: 28px;
   margin-top: 48px;
 }
@@ -1596,4 +1607,7 @@ a:hover { color: var(--link-hover); }
   .section-desc.nowrap-desc { white-space: normal; }
   .hero-subtitle { white-space: normal; font-size: 14px; }
   .about-text { white-space: normal; font-size: 14px; }
+  .about-text.nowrap { white-space: normal; }
+  .pager-nums { flex-wrap: wrap; justify-content: center; }
+  .pager-num { min-width: 42px; height: 42px; }
 }

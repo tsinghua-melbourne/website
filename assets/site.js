@@ -17,15 +17,27 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (toggle && links) {
+    var inner = document.querySelector('.nav-inner');
+    var closeMenu = function () {
+      links.classList.remove('open');
+      if (inner) inner.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
     toggle.addEventListener('click', function () {
-      links.classList.toggle('open');
-      var inner = document.querySelector('.nav-inner');
-      if (inner) inner.classList.toggle('open', links.classList.contains('open'));
+      var isOpen = links.classList.toggle('open');
+      if (inner) inner.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
     });
     links.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        links.classList.remove('open');
-      });
+      a.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('click', function (e) {
+      if (links.classList.contains('open') && !links.contains(e.target) && !toggle.contains(e.target)) {
+        closeMenu();
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
     });
   }
 
