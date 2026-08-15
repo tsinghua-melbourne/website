@@ -851,6 +851,25 @@ a:hover { color: var(--link-hover); }
   box-shadow: var(--shadow-md);
 }
 .post-content a { word-break: break-all; font-weight: 500; }
+/* Trailing external link (e.g. "Read more at: URL") highlighted as a button */
+.post-content a.post-link-end {
+  display: inline-block;
+  margin: 10px 0 4px;
+  padding: 11px 24px;
+  background: linear-gradient(120deg, var(--purple-700), var(--purple-500));
+  color: #fff;
+  border-radius: 100px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(116, 52, 129, 0.32);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.post-content a.post-link-end:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(116, 52, 129, 0.45);
+}
 .post-content .post-citation {
   margin: 32px auto;
   padding: 20px 26px;
