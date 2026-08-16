@@ -229,7 +229,7 @@ a:hover { color: var(--link-hover); }
 }
 
 @media (max-width: 900px) {
-  .nav { top: 0; padding: 0; }
+  .nav { top: 0; padding: 0; position: static; }
   .nav-inner { border-radius: 0; border-left: none; border-right: none; border-top: none; height: 84px; }
   .nav-inner.open { background: var(--bg); border-bottom: 1px solid var(--border); }
   .nav-toggle { display: block; }
@@ -263,21 +263,21 @@ a:hover { color: var(--link-hover); }
   background: #2b0a3d;
 }
 
-/* Homepage hero: full viewport height */
+/* Homepage hero: same 1000:520 aspect ratio as the skyline background,
+   so 'cover' displays the entire image without cropping on any screen */
 .hero:not(.hero-small) {
-  min-height: 100vh;
-  min-height: 100svh;
+  aspect-ratio: 1000 / 520;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 150px 22px;
+  padding: 90px 22px;
 }
 
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('skyline.jpg?v=2026-08-16') center / cover no-repeat fixed;
+  background: url('skyline.jpg?v=2026-08-16') center / cover no-repeat scroll;
   opacity: 0.16;
   mix-blend-mode: screen;
   pointer-events: none;
@@ -366,16 +366,6 @@ a:hover { color: var(--link-hover); }
   height: auto;
   opacity: 0.95;
   filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.45));
-}
-
-/* On portrait/narrow screens (any viewport narrower than the 1000:520 image),
-   'cover' would crop the skyline to a tiny blurry center strip. Show the full
-   image instead; the rest of the hero stays the plain violet background. */
-@media (max-aspect-ratio: 1000/520) {
-  .hero::before {
-    background-attachment: scroll;
-    background-size: contain;
-  }
 }
 
 /* ---------- Sections ---------- */
@@ -1693,7 +1683,12 @@ a:hover { color: var(--link-hover); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 700px) {
-  .hero { padding: 150px 22px 90px; }
+  .hero { padding: 24px 22px 36px; }
+  .hero:not(.hero-small) { padding: 24px 22px 36px; }
+  .hero:not(.hero-small) .hero-kicker { font-size: 11px; letter-spacing: 3px; margin-bottom: 8px; }
+  .hero:not(.hero-small) .hero-title { font-size: clamp(20px, 6.5vw, 34px); letter-spacing: 4px; line-height: 1.15; margin-bottom: 8px; }
+  .hero:not(.hero-small) .hero-subtitle { font-size: 11px; margin-bottom: 12px; }
+  .hero:not(.hero-small) .hero-cta { margin-top: 0; padding: 9px 20px; font-size: 14px; }
   .section { padding: 68px 22px; }
   .cta-row { flex-direction: column; align-items: center; }
   .btn { width: 100%; max-width: 340px; justify-content: center; }
