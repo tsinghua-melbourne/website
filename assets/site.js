@@ -49,13 +49,10 @@ document.addEventListener('DOMContentLoaded', function () {
   if (postList) {
     var cards = Array.prototype.slice.call(postList.children);
     var pagerNums = document.getElementById('pager-nums');
-    var state = { perPage: 9, page: 0 };
+    var state = { perPage: 12, page: 0 };
 
     function perPageForWidth(w) {
-      if (w < 640) return 6;
-      if (w < 1024) return 9;
-      if (w < 1440) return 12;
-      return 15;
+      return 12;
     }
 
     function render() {

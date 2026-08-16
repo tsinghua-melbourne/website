@@ -164,7 +164,7 @@ a:hover { color: var(--link-hover); }
 .brand { display: flex; align-items: center; gap: 10px; }
 
 .brand-logo {
-  height: 70.4px;
+  height: 56px;
   width: auto;
   filter: drop-shadow(0 2px 6px rgba(43, 10, 61, 0.25));
   transition: filter 0.35s ease;
@@ -260,17 +260,24 @@ a:hover { color: var(--link-hover); }
   text-align: center;
   color: #fff;
   overflow: hidden;
-  background:
-    radial-gradient(1200px 500px at 80% -10%, rgba(142, 68, 173, 0.55), transparent 60%),
-    radial-gradient(900px 420px at 10% 110%, rgba(63, 18, 87, 0.85), transparent 65%),
-    linear-gradient(160deg, #2b0a3d 0%, #3f1257 45%, #660874 100%);
+  background: #2b0a3d;
+}
+
+/* Homepage hero: full viewport height */
+.hero:not(.hero-small) {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 150px 22px;
 }
 
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('skyline.jpg') center 20% / cover no-repeat;
+  background: url('skyline.jpg') center / cover no-repeat fixed;
   opacity: 0.16;
   mix-blend-mode: screen;
   pointer-events: none;
@@ -280,7 +287,7 @@ a:hover { color: var(--link-hover); }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(43, 10, 61, 0.25) 0%, rgba(43, 10, 61, 0) 40%, rgba(43, 10, 61, 0.55) 100%);
+  background: rgba(255, 255, 255, 0.1);
   pointer-events: none;
 }
 
@@ -440,7 +447,7 @@ a:hover { color: var(--link-hover); }
 .home-spacer { height: 50px; }
 
 .home-image {
-  max-width: 200px;
+  max-width: 170px;
   width: 100%;
   margin: 0 auto;
 }
@@ -1643,7 +1650,7 @@ a:hover { color: var(--link-hover); }
 }
 .footer-inner { max-width: 980px; margin: 0 auto; text-align: center; }
 .footer-logo {
-  height: 64px;
+  height: 56px;
   width: auto;
   margin: 0 auto 12px;
   opacity: 0.9;
