@@ -368,6 +368,16 @@ a:hover { color: var(--link-hover); }
   filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.45));
 }
 
+/* On portrait/narrow screens (any viewport narrower than the 1000:520 image),
+   'cover' would crop the skyline to a tiny blurry center strip. Show the full
+   image instead; the rest of the hero stays the plain violet background. */
+@media (max-aspect-ratio: 1000/520) {
+  .hero::before {
+    background-attachment: scroll;
+    background-size: contain;
+  }
+}
+
 /* ---------- Sections ---------- */
 .section { padding: 100px 22px; }
 .section-gray { background: var(--bg-alt); }
@@ -1684,7 +1694,6 @@ a:hover { color: var(--link-hover); }
 /* ---------- Responsive ---------- */
 @media (max-width: 700px) {
   .hero { padding: 150px 22px 90px; }
-  .hero::before { background-attachment: scroll; }
   .section { padding: 68px 22px; }
   .cta-row { flex-direction: column; align-items: center; }
   .btn { width: 100%; max-width: 340px; justify-content: center; }
