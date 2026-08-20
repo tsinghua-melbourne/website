@@ -272,13 +272,29 @@ a:hover { color: var(--link-hover); }
   align-items: center;
   justify-content: center;
   padding: 90px 22px;
+  background: transparent;
+}
+
+.hero:not(.hero-small)::before {
+  opacity: 1;
+  mix-blend-mode: normal;
+}
+
+.hero:not(.hero-small) .hero-kicker,
+.hero:not(.hero-small) .hero-title,
+.hero:not(.hero-small) .hero-subtitle {
+  text-shadow: 0 2px 8px rgba(43, 10, 61, 0.55), 0 8px 28px rgba(43, 10, 61, 0.65);
+}
+
+.hero:not(.hero-small)::after {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.35));
 }
 
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('skyline.jpg?v=2026-08-16') center / cover no-repeat scroll;
+  background: url('skyline.jpg?v=2026-08-21') center / cover no-repeat fixed;
   opacity: 0.16;
   mix-blend-mode: screen;
   pointer-events: none;
@@ -377,6 +393,7 @@ a:hover { color: var(--link-hover); }
 
 .section-inner { max-width: 1040px; margin: 0 auto; }
 .section-inner.narrow { max-width: 780px; }
+.section-inner-full { max-width: none; }
 .section-inner-wide { max-width: 1240px; }
 
 .kicker {
@@ -1211,6 +1228,29 @@ a:hover { color: var(--link-hover); }
 .committee-table tbody tr:hover td { background: var(--purple-100); }
 .committee-table tbody tr:first-child td { border-top: none; }
 
+.committee-photo {
+  margin: 32px auto 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  background: var(--card-bg);
+}
+.committee-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.committee-photo figcaption {
+  padding: 10px 14px 12px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  text-align: center;
+  letter-spacing: 0.5px;
+  border-top: 1px solid var(--border);
+}
+
 /* Keep the term column visible while the table scrolls horizontally on mobile */
 .committee-table th:first-child,
 .committee-table td:first-child {
@@ -1323,6 +1363,18 @@ a:hover { color: var(--link-hover); }
   letter-spacing: 1px;
 }
 .bank-table td:last-child { color: var(--text); font-weight: 500; }
+
+/* Fee page: payment info + registration form side by side */
+.fee-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 44px;
+  align-items: start;
+}
+.fee-main { min-width: 0; }
+@media (max-width: 900px) {
+  .fee-layout { grid-template-columns: 1fr; }
+}
 
 .form-embed {
   border-radius: var(--radius-lg);
