@@ -41,6 +41,26 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Drive the embedded QR-to-tree scene with the contact page's own scroll.
+  var qrTree = document.getElementById('qr-tree-scroll');
+  var qrTreeFrame = document.getElementById('qr-tree-frame');
+  if (qrTree && qrTreeFrame) {
+    var qrTreeSticky = qrTree.querySelector('.qr-tree-sticky');
+    var syncQrTree = function () {
+      var rect = qrTree.getBoundingClientRect();
+      var stickyTop = parseFloat(window.getComputedStyle(qrTreeSticky).top) || 0;
+      var travel = Math.max(1, qrTree.offsetHeight - qrTreeSticky.offsetHeight);
+      var progress = Math.max(0, Math.min(1, (stickyTop - rect.top) / travel));
+      if (qrTreeFrame.contentWindow) {
+        qrTreeFrame.contentWindow.postMessage({ type: 'tuaam-qr-tree-progress', progress: progress }, '*');
+      }
+    };
+    window.addEventListener('scroll', syncQrTree, { passive: true });
+    window.addEventListener('resize', syncQrTree);
+    qrTreeFrame.addEventListener('load', syncQrTree);
+    syncQrTree();
+  }
+
   // Post page "back to news" goes to the news page containing this post's card
   // (href is generated per-post; nothing to intercept)
 

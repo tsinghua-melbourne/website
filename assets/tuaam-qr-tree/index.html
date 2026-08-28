@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>TUAAM Spring QR Tree</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="embed">
+  <header class="brand" aria-label="TUAAM Spring QR Tree">
+    <img src="assets/tuaam-logo.png" alt="TUAAM">
+    <div><strong>TUAAM</strong><span>Spring QR Tree</span></div>
+  </header>
+
+  <main>
+    <canvas id="scene" aria-label="The TUAAM QR code transforming into a spring tree"></canvas>
+    <img id="qrSource" src="assets/tuaam-wechat-qr-vector.svg" alt="TUAAM WeChat QR code">
+    <p class="qr-follow">扫描二维码关注墨尔本清华校友会微信公众号</p>
+
+    <section class="panel" aria-label="Animation controls">
+      <div class="copy">
+        <span class="eyebrow">TUAAM · SPRING</span>
+        <strong id="title">A QR code waiting to bloom</strong>
+        <span id="status">Every purple block becomes part of the tree.</span>
+      </div>
+      <div class="scroll-cue" aria-label="Scroll transformation progress">
+        <span>SCROLL</span>
+        <div class="meter"><i id="progressBar"></i></div>
+        <b id="percent">0%</b>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
